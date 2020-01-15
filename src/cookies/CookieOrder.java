@@ -3,9 +3,11 @@ package cookies;
 public class CookieOrder {
 
 	private String variety;
+	private int numBoxes;
 	
-	public CookieOrder(String variety) {
+	public CookieOrder(String variety, int numBoxes) {
 		this.variety = variety;
+		this.numBoxes = numBoxes;
 	}
 	
 	/**
@@ -14,6 +16,10 @@ public class CookieOrder {
 	 */
 	public String getVariety() {
 		return this.variety;
+	}
+
+	public int getNumBoxes() {
+		return numBoxes;
 	}
 
 }
