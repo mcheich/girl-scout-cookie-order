@@ -32,4 +32,32 @@ public class MasterOrder {
 		this.orders = orders;
 	}
 
+	/**
+	 * Sums all the boxes on the order.
+	 * @return Integer Total number of boxes on order
+	 */
+	public int getTotalBoxes() {
+		
+		int numBoxes = 0;
+		for(CookieOrder anOrder :this.orders) {
+			numBoxes += anOrder.getNumBoxes();
+		}
+		
+		return numBoxes;
+	}
+
+	/**
+	 * Removes a variety from ArrayList
+	 * @param Variety
+	 */
+	public void removeVariety(String variety) {
+		
+		for(CookieOrder anOrder: this.orders) {
+			
+			if(anOrder.getVariety() == variety) {
+				this.orders.remove(anOrder);
+			}
+		}
+	}
+
 }

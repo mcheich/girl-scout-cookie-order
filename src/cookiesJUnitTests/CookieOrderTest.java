@@ -30,7 +30,6 @@ class CookieOrderTest {
 	}
 	
 	@Test
-	
 	void addOrderAddsanOrderToTheArrayList() {
 		//Arrange
 		CookieOrder order = new CookieOrder("Thin Mints", 7);
@@ -41,6 +40,33 @@ class CookieOrderTest {
 		assertTrue(underTest.getOrders().contains(order));
 	}
 	
+	@Test
+	void getTotalBoxesAddsUpTo12() {
+		//Arrange
+		CookieOrder order1 = new CookieOrder("Thin Mints", 7);
+		CookieOrder order2 = new CookieOrder("Tagalongs", 5);
+		MasterOrder underTest = new MasterOrder();
+		//Act
+		underTest.addOrder(order1);
+		underTest.addOrder(order2);
+		int result = underTest.getTotalBoxes();
+		//Assert
+		assertEquals(12, result);
+	}
+
+	@Test
+	void removeVarietyremovesThinMints() {
+		//Arrange
+		CookieOrder order1 = new CookieOrder("Thin Mints", 7);
+		CookieOrder order2 = new CookieOrder("Tagalongs", 5);
+		MasterOrder underTest = new MasterOrder();
+		//Act
+		underTest.addOrder(order1);
+		underTest.addOrder(order2);
+		underTest.removeVariety("Thin Mints");
+		//Assert
+		assertFalse(underTest.getOrders().contains(order1));
+	}
 	/**
 	 * Not sure if/what/how to test drive an empty constructor.
 	 * This didn't work.
