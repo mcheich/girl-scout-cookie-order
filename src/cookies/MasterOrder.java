@@ -1,6 +1,7 @@
 package cookies;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class MasterOrder {
 
@@ -56,10 +57,12 @@ public class MasterOrder {
 	 */
 	public void removeVariety(String variety) {
 
-		for (CookieOrder anOrder : this.orders) {
-
-			if (anOrder.getVariety() == variety) {
-				this.orders.remove(anOrder);
+		// for (CookieOrder anOrder : this.orders) {
+		Iterator<CookieOrder> itr = this.orders.iterator();
+		while (itr.hasNext()) {
+			if (itr.next().getVariety().equals(variety)) {
+				itr.remove();
+				// System.out.println("###removeVariety Flag###");
 			}
 		}
 	}
@@ -74,7 +77,7 @@ public class MasterOrder {
 		int numBoxes = 0;
 		for (CookieOrder anOrder : this.orders) {
 
-			if (anOrder.getVariety() == variety) {
+			if (anOrder.getVariety().equals(variety)) {
 				numBoxes += anOrder.getNumBoxes();
 			}
 		}
@@ -82,13 +85,12 @@ public class MasterOrder {
 	}
 
 	/**
-	 * Displays the orders to the console 
-	 * by variety and number of boxes  
+	 * Displays the orders to the console by variety and number of boxes
 	 */
 	public void showOrder() {
 
 		for (CookieOrder anOrder : this.orders) {
-			System.out.println("Variety: " + anOrder.getVariety() + "Boxes: " + anOrder.getNumBoxes());
+			System.out.println("Variety: " + anOrder.getVariety() + "  Boxes: " + anOrder.getNumBoxes());
 		}
 	}
 

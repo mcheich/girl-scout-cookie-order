@@ -68,6 +68,20 @@ class CookieOrderTest {
 		assertFalse(underTest.getOrders().contains(order1));
 	}
 	
+	@Test
+	void removeVarietyremovesTagalongs() {
+		//Arrange
+		CookieOrder order1 = new CookieOrder("Thin Mints", 7);
+		CookieOrder order2 = new CookieOrder("Tagalongs", 5);
+		MasterOrder underTest = new MasterOrder();
+		//Act
+		underTest.addOrder(order1);
+		underTest.addOrder(order2);
+		underTest.removeVariety("Tagalongs");
+		//Assert
+		assertFalse(underTest.getOrders().contains(order2));
+	}
+	
 	
 	@Test
 	void getVarietyBoxesReturns7() {
